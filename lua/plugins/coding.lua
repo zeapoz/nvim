@@ -1,7 +1,19 @@
 return {
   {
     "mini.pairs",
-    opts = { mappings = { [" "] = { action = "open", pair = "  ", neigh_pattern = "[%(%[{][%)%]}]" } } },
+    opts = {
+      mappings = { [" "] = { action = "open", pair = "  ", neigh_pattern = "[%(%[{][%)%]}]" } },
+    },
+    config = function(_, opts)
+      -- Disable single quote for Rust files.
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "rust",
+        callback = function()
+          vim.keymap.set("i", "'", "'", { buffer = 0 })
+        end,
+      })
+      LazyVim.mini.pairs(opts)
+    end,
   },
 
   {
