@@ -1,0 +1,16 @@
+{
+  "modtest": {
+    "prefix": "modtests",
+    "body": [
+      "#[cfg(test)]",
+      "mod tests {",
+      "    use super::*;\n",
+      "    #[test]",
+      "    fn ${1:name}() {",
+      "        ${2:todo!();}",
+      "    }",
+      "}"
+    ],
+    "description": "#[cfg(test)]\nmod tests {...}"
+  }
+}
