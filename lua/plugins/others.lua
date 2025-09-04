@@ -15,17 +15,6 @@ return {
   },
 
   {
-    "NotAShelf/direnv.nvim",
-    lazy = false,
-    opts = {
-      autoload_direnv = true,
-      statusline = {
-        enabled = true,
-      },
-    },
-  },
-
-  {
     "kawre/leetcode.nvim",
     cmd = "Leet",
     opts = {
