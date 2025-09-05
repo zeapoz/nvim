@@ -87,41 +87,15 @@ return {
       },
     },
   },
+  -- stylua: ignore
   keys = {
     {
       "<leader>e",
-      function()
-        require("snacks.explorer").open({
-          cwd = LazyVim.root(),
-          layout = "default_solid",
-          auto_close = true,
-        })
-      end,
+      function() Snacks.explorer.open({ cwd = LazyVim.root(), layout = "default_solid", auto_close = true }) end,
       desc = "Explorer Snacks (root-dir)",
     },
-    {
-      "<leader>E",
-      function()
-        require("snacks.explorer").open({
-          layout = "default_solid",
-          auto_close = true,
-        })
-      end,
-      desc = "Explorer Snacks (cwd)",
-    },
-    {
-      "<leader>.",
-      function()
-        require("snacks.picker").files()
-      end,
-      desc = "Find Files (cwd)",
-    },
-    {
-      "<leader>z",
-      function()
-        require("snacks").scratch()
-      end,
-      desc = "Toggle Scratch Buffer",
-    },
+    { "<leader>E", function() Snacks.explorer.open({ layout = "default_solid", auto_close = true }) end, desc = "Explorer Snacks (cwd)" },
+    { "<leader>.", function() Snacks.picker.files({ cwd = LazyVim.root() }) end, desc = "Find Files (root-dir)" },
+    { "<leader>z", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
   },
 }
