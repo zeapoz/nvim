@@ -18,6 +18,15 @@ return {
   },
 
   {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        { "ga", group = "append" },
+      },
+    },
+  },
+
+  {
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
