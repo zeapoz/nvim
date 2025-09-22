@@ -8,6 +8,6 @@ local function disable_plugins(plugins)
 end
 
 return disable_plugins({
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
+  "mason-org/mason.nvim",
+  "mason-org/mason-lspconfig.nvim",
 })
