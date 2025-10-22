@@ -26,3 +26,33 @@ if g.neovide then
   g.neovide_hide_mouse_when_typing = true
   g.neovide_scroll_animation_length = 0.1
 end
+
+-- Check if running inside WSL2.
+local function is_wsl()
+  local uname = vim.loop.os_uname().release
+  return uname:find("WSL") ~= nil
+end
+
+if is_wsl() then
+ -- WSL2 Clipboard Sync.
+ vim.g.clipboard = {
+   name = "WslClipboard",
+   copy = {
+     ["+"] = { "clip.exe" },
+     ["*"] = { "clip.exe" },
+   },
+   paste = {
+     ["+"] = {
+       "/mnt/c/Windows/System32/WindowsPowerShell/v1.0///powershell.exe",
+       "-c",
+       '[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+     },
+     ["*"] = {
+       "/mnt/c/Windows/System32/WindowsPowerShell/v1.0///powershell.exe",
+       "-c",
+       '[Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+     },
+   },
+   cache_enabled = false,
+ }
+end
