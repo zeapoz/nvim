@@ -12,8 +12,14 @@ return {
       modes = {
         diagnostics = {
           win = {
-            position = "right",
+            position = "bottom",
             size = 0.3,
+          },
+          preview = {
+            type = "split",
+            relative = "win",
+            position = "right",
+            size = 0.4,
           },
           filter = function(items)
             local severity = vim.diagnostic.severity.HINT
@@ -24,6 +30,18 @@ return {
               return item.severity == severity
             end, items)
           end,
+        },
+        symbols = {
+          win = {
+            position = "right",
+            size = 0.2,
+          },
+        },
+        todo = {
+          win = {
+            position = "bottom",
+            size = 0.3,
+          },
         },
       },
     },
